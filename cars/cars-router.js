@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
         })
 })
 
+//get request to retrieve a singel car /api/cars/:id
 router.get('/:id', (req, res) => {
     const { id } = req.params
 
@@ -45,6 +46,23 @@ router.post('/', (req, res) => {
             console.log(err)
             res.status(500).json({
                 message: "error creating new car"
+            })
+        })
+})
+
+//Put request to update a car's information /api/car/:id
+router.put('/:id', (req, res) => {
+    const update = req.body
+    const { id } = req.params
+
+    db('cars').where({ id }).update(update)
+        .then(update => {
+            res.json(update)
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                message: "error updating car"
             })
         })
 })
