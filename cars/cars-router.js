@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     db('cars')
         .then(cars => {
-            res.json(cars[0])
+            res.json(cars)
         })
         .catch(err => {
             console.log(err)
