@@ -67,6 +67,7 @@ router.put('/:id', (req, res) => {
         })
 })
 
+//Delete request to remove a car entry /api/cars/:id
 router.delete('/:id', (req, res) => {
     const { id } = req.params
 
